@@ -11,7 +11,7 @@ function Verify() {
     const data = JSON.parse(localStorage.getItem('registrationData'));
     if (!data) {
       alert('No registration data found. Please register again.');
-      navigate('/register');
+      navigate('/register-new');
     } else {
       setRegistrationData(data);
     }
@@ -21,7 +21,7 @@ function Verify() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/auth/verify-code', {
+      const response = await fetch('https://majiquickserver.onrender.com/auth/verify-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -35,7 +35,7 @@ function Verify() {
       if (data.success) {
         alert('✅ Registration complete! You are now logged in.');
         localStorage.removeItem('registrationData');
-        navigate('/dashboard');
+        navigate('/');
       } else {
         alert('❌ ' + data.message);
       }
