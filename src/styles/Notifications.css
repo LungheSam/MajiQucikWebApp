@@ -5,6 +5,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 .notifications{
     margin-inline: 10px;
