@@ -30,7 +30,7 @@ function Login() {
         <button type="submit">Login</button>
       </form>
 
-      <p>
+      <p> 
         Don't have an account? <a href="/register">Register</a>
       </p>
     </div>
