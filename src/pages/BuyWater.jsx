@@ -8,6 +8,8 @@ function BuyWater() {
   const [jerrycans, setJerrycans] = useState('');
   const [confirmation, setConfirmation] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   // Fetch user details from the "users" collection
   useEffect(() => {
@@ -36,6 +38,7 @@ function BuyWater() {
 
         const cost = parsedJerrycans * 100;
         const code = Math.floor(100000 + Math.random() * 900000).toString();
+        setLoading(true);
 
         try {
           // Step 1: Fetch user details (from local data or Firestore)
@@ -72,6 +75,9 @@ function BuyWater() {
           console.error(error);
           alert('❌ Something went wrong.');
         }
+        finally{
+          setLoading(false);
+        }
   };
 
 
@@ -86,7 +92,10 @@ function BuyWater() {
         onChange={(e) => setJerrycans(e.target.value)}
       />
       <p>Each JerryCan costs <strong>100 UGX</strong></p>
-      <button onClick={handlePurchase} className='buy-button'>Buy</button>
+      <button onClick={handlePurchase} className="buy-button" disabled={loading}>
+        {loading ? 'Buying…' : 'Buy'}
+      </button>
+
       
       {confirmation && (
         <div className="confirmation-box">

@@ -9,16 +9,21 @@ import "../index.css";
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert('✅ Login successful!');
       navigate('/'); // Or wherever the user should go after login
     } catch (error) {
       alert('❌ Login failed: ' + error.message);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -28,7 +33,9 @@ function Login() {
       <form onSubmit={handleLogin} className="form-group">
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
+        <button type='submit' className="buy-button" disabled={loading}>
+        {loading ? 'Logging In…' : 'Login'}
+        </button>
       </form>
 
       <p> 

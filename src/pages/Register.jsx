@@ -8,11 +8,12 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
   e.preventDefault();
-
+  setLoading(true);
   // Basic validations
   if (!name || !phone || !email || !password || !confirmPassword) {
     alert('❌ All fields are required');
@@ -64,6 +65,9 @@ function Register() {
   } catch (error) {
     alert('Server error: ' + error.message);
   }
+  finally{
+    setLoading(false);
+  }
 };
 
 
@@ -76,7 +80,9 @@ function Register() {
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
-        <button type="submit">Register</button>
+        <button type='submit' className="buy-button" disabled={loading}>
+        {loading ? 'Registering…' : 'Register'}
+        </button>
       </form>
 
       <p>
