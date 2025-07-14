@@ -1,0 +1,27 @@
+.notifications{
+    margin-inline: 10px;
+}
+.notification-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #0077ff; /* accent stripe */
+  border-radius: 8px;
+  padding: 16px;
+  margin-block: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  max-width: 430px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notification-card p {
+  margin: 0 0 8px 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+.notification-card small {
+  color: #888;
+  font-size: 13px;
+}

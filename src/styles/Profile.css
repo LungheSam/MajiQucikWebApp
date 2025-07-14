@@ -1,0 +1,30 @@
+.profile-container {
+  max-width: 430px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-content {
+  padding: 24px;
+  text-align: center;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.profile-content h2 {
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: #0077ff;
+}
+
+.profile-content p {
+  font-size: 16px;
+  margin: 8px 0;
+}

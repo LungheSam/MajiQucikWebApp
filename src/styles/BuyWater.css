@@ -1,0 +1,31 @@
+.buywater-container{
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.buywater-container .buy-button {
+  padding: 10px 20px;
+  margin: 10px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="number"] {
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.confirmation-box {
+  margin-top: 20px;
+  padding: 10px;
+  background: #d4edda;
+  border-left: 4px solid #28a745;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  padding-left: 30px;
+}
