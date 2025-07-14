@@ -46,7 +46,7 @@ function BuyWater() {
           if (!userData) return alert('User data not found');
 
           // Step 2: Send purchase info to backend
-          const res = await fetch('http://localhost:3000/api/purchase', {
+          const res = await fetch('https://majiquickserver.onrender.com/api/purchase', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

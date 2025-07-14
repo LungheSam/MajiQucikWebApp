@@ -59,7 +59,7 @@ function App() {
 
           {/* 🚪 Public Routes */}
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register-new" element={<Register />} />
           <Route path="/verify" element={<Verify />} />
         </Routes>
       </Router>

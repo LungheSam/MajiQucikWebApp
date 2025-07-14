@@ -17,6 +17,7 @@
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .buywater-container input[type="number"] {
@@ -24,6 +25,7 @@
   width: 90%;
   margin-bottom: 10px;
   margin-inline: auto;
+  font-size: 16px;
 }
 
 .confirmation-box {

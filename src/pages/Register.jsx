@@ -46,7 +46,7 @@ function Register() {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/auth/send-code', {
+    const response = await fetch('https://majiquickserver.onrender.com/auth/send-code', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, email, password, confirmPassword }),
