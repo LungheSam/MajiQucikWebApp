@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { Link } from 'react-router-dom';
 import "../index.css";
 
 function Login() {
@@ -31,7 +32,7 @@ function Login() {
       </form>
 
       <p> 
-        Don't have an account? <a href="/register-new">Register</a>
+        Don't have an account? <Link to="/register-new">Register</Link>
       </p>
     </div>
   );

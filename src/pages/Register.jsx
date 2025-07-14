@@ -1,7 +1,7 @@
 // src/pages/Register.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function Register() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -80,7 +80,7 @@ function Register() {
       </form>
 
       <p>
-        Already have an account? <a href="/login">Login</a>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );
