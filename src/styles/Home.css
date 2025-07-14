@@ -1,5 +1,5 @@
 /* ========= GLOBAL MOBILE CONTAINER ========= */
-.mobile-container {
+.mobile-container,.menu-page {
   max-width: 430px; /* Limit width for mobile feel */
   margin: 0 auto;
   height: 100vh;
@@ -71,11 +71,13 @@
 
 /* ========= HOME PAGE ========= */
 .home {
-  flex: 1;
+
+  max-width: 430px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f9f9f9;
-  height: 100%;
 }
 
 .home-main {
@@ -90,7 +92,7 @@
 
 .home-main-desc{
     font-size: 18px; 
-    max-width:300px;
+    max-width:400px;
     margin-top: 12px; 
     margin-bottom: 12px;
 }
@@ -106,6 +108,7 @@
   width: 100%;
   max-width: 300px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .menu-links a,

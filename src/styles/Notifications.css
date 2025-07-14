@@ -1,3 +1,11 @@
+.notifications-container{
+  max-width: 430px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .notifications{
     margin-inline: 10px;
 }

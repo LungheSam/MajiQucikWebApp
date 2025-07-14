@@ -85,8 +85,9 @@ function BuyWater() {
         value={jerrycans}
         onChange={(e) => setJerrycans(e.target.value)}
       />
-      <button onClick={handlePurchase} className='buy-button'>Buy</button>
       <p>Each JerryCan costs <strong>100 UGX</strong></p>
+      <button onClick={handlePurchase} className='buy-button'>Buy</button>
+      
       {confirmation && (
         <div className="confirmation-box">
           <pre>{confirmation}</pre>

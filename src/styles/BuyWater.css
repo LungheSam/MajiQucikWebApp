@@ -1,6 +1,11 @@
 .buywater-container{
   text-align: center;
+  max-width: 430px;
+  margin: 0 auto;
   background: #f9f9f9;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .buywater-container .buy-button {
@@ -14,10 +19,11 @@
   cursor: pointer;
 }
 
-input[type="number"] {
+.buywater-container input[type="number"] {
   padding: 10px;
-  width: 60%;
+  width: 90%;
   margin-bottom: 10px;
+  margin-inline: auto;
 }
 
 .confirmation-box {

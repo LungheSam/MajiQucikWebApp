@@ -1,12 +1,33 @@
-# React + Vite
+# 💧 MajiQuick
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MajiQuick** is a mobile-first water purchase app that lets users buy water using a simple digital interface. It supports authentication via Firebase and offers features like buying water bundles, receiving codes, SMS/email notifications, and viewing past purchase history.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 Firebase Email/Password Authentication
+- 💳 Buy water by number of jerrycans
+- ✉️ Get notified by SMS & Email after purchase
+- 📱 Mobile-first design for a clean UX
+- 🔔 View recent purchase notifications
+- 👤 Simple user profile screen
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Tech Stack
+
+- React + Vite
+- Firebase (Auth, Firestore)
+- Node.js (for backend API notifications)
+- Deployed on Vercel
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/LungheSam/majiquick.git
+cd majiquick
