@@ -33,7 +33,7 @@ function Login() {
       <form onSubmit={handleLogin} className="form-group">
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type='submit' className="buy-button" disabled={loading}>
+        <button type='submit' className="login-button" disabled={loading}>
         {loading ? 'Logging In…' : 'Login'}
         </button>
       </form>

@@ -55,7 +55,7 @@ function Verify() {
           onChange={e => setCode(e.target.value)}
           required
         />
-        <button type="submit">Verify & Complete Registration</button>
+        <button type="submit" className='login-button'>Verify & Complete Registration</button>
       </form>
     </div>
   );

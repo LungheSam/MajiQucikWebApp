@@ -80,7 +80,7 @@ function Register() {
         <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
-        <button type='submit' className="buy-button" disabled={loading}>
+        <button type='submit' className="login-button" disabled={loading}>
         {loading ? 'Registering…' : 'Register'}
         </button>
       </form>
