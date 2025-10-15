@@ -6,7 +6,7 @@ import Header from '../components/Header';
 function Home() {
   return (
     <div className="home">
-      <Header title="MajiQuick 💧" />
+      <Header title="MajiQuick" />
 
       <main className="home-main">
         <h2>Welcome to MajiQuick</h2>

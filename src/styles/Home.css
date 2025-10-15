@@ -1,141 +1,385 @@
+/* ========= GLOBAL STYLES & VARIABLES ========= */
+:root {
+  --primary-blue: #0077ff;
+  --blue-dark: #0055cc;
+  --blue-light: #4da6ff;
+  --water-blue: #e6f2ff;
+  --gradient-primary: linear-gradient(135deg, #0077ff 0%, #00a8ff 100%);
+  --gradient-water: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+  --shadow-soft: 0 8px 25px rgba(0, 119, 255, 0.15);
+  --shadow-hover: 0 12px 35px rgba(0, 119, 255, 0.25);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f5f9ff 0%, #e6f2ff 100%);
+  min-height: 100vh;
+}
+
 /* ========= GLOBAL MOBILE CONTAINER ========= */
-.mobile-container,.menu-page {
-  max-width: 430px; /* Limit width for mobile feel */
+.mobile-container, .menu-page, .home {
+  max-width: 430px;
   margin: 0 auto;
-  height: 100vh;
-  background: #f9f9f9;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 119, 255, 0.1);
 }
 
+/* Water bubble background effect */
+.mobile-container::before, .home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 119, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 168, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(77, 166, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* ========= HEADER ========= */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background-color: #0077ff;
+  padding: 20px 24px;
+  background: var(--gradient-primary);
   color: white;
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
 }
 
 .app-title {
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-title::before {
+  content: '💧';
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .menu-button {
-  font-size: 24px;
-  background: none;
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
   cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
 }
 
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
 
 /* ========= MOBILE MENU ========= */
 .mobile-menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 80%;
-  background-color: white;
-  padding: 16px;
-  display: none;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  padding: 80px 24px 40px;
+  display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  gap: 8px;
+  box-shadow: var(--shadow-hover);
   z-index: 20;
+  transition: var(--transition);
+  border-radius: 0 24px 24px 0;
 }
 
 .mobile-menu.open {
-  display: flex;
+  left: 0;
 }
 
-
+.mobile-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: var(--gradient-primary);
+  border-radius: 0 0 24px 0;
+  z-index: -1;
+}
 
 /* ========= BACKDROP FOR MENU ========= */
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 15;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
 }
 
+.backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* ========= HOME PAGE ========= */
 .home {
-
-  max-width: 430px;
-  margin: 0 auto;
-  background: #f9f9f9;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .home-main {
   flex: 1;
-  padding: 24px;
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.home-main-desc{
-    font-size: 18px; 
-    max-width:400px;
-    margin-top: 12px; 
-    margin-bottom: 12px;
+/* Animated water icon */
+.water-icon {
+  font-size: 80px;
+  margin-bottom: 24px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(0, 119, 255, 0.3));
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.home-main h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-main-desc {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  max-width: 380px;
+  margin: 16px 0 32px;
+  padding: 20px;
+  background: var(--gradient-water);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0, 119, 255, 0.1);
+  position: relative;
+}
+
+.home-main-desc strong {
+  color: var(--primary-blue);
+  font-weight: 700;
+  background: rgba(0, 119, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
 /* ========= BUTTONS ========= */
 .big-buy-button {
-  margin-top: 24px;
-  padding: 20px 32px;
+  margin-top: 16px;
+  padding: 24px 40px;
   font-size: 20px;
-  background-color: #0077ff;
+  font-weight: 700;
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   cursor: pointer;
-  font-weight: bold;
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.5px;
+}
+
+.big-buy-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.big-buy-button:hover::before {
+  left: 100%;
+}
+
+.big-buy-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.big-buy-button:active {
+  transform: translateY(-1px);
+}
+
+/* Menu Links Styling */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .menu-links a,
 .menu-links button {
-
-  display: block;
-  width: 90%;
-  margin: 16px auto;
-  font-size: 18px;
-  padding: 10px;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  font-size: 17px;
   text-decoration: none;
-  background: none;
-  border: none;
-  color: #0077ff;
+  background: white;
+  border: 2px solid transparent;
+  color: var(--primary-blue);
   cursor: pointer;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 119, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-links a::before,
+.menu-links button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.menu-links a:hover::before,
+.menu-links button:hover::before {
+  transform: scaleY(1);
+}
+
+.menu-links a:hover,
+.menu-links button:hover {
+  background: var(--water-blue);
+  transform: translateX(8px);
+  border-color: var(--blue-light);
+}
+
+.menu-links a:active,
+.menu-links button:active {
+  transform: translateX(4px) scale(0.98);
+}
+
+/* Logout button specific styles */
+button.logout-button {
+  background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+  color: white;
+  border: none;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
   text-align: center;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
 }
-.menu-links a:hover{
-    background-color: #0077ff;
-    color:#fff;
-    
+
+button.logout-button:hover {
+  background: linear-gradient(135deg, #ff3742 0%, #ff2e3b 100%);
+  transform: translateX(8px);
 }
-button.logout-button{
-    background-color: red;
-    color: #fff;
-    border-radius: 5px;
+
+/* Menu icons */
+.menu-links a::after,
+.menu-links button::after {
+  font-size: 20px;
+}
+
+.menu-links a:nth-child(1)::after { content: '💳'; }
+.menu-links a:nth-child(2)::after { content: '📖'; }
+.menu-links a:nth-child(3)::after { content: 'ℹ️'; }
+.menu-links a:nth-child(4)::after { content: '📞'; }
+
+/* Responsive adjustments */
+@media (max-width: 380px) {
+  .home-main {
+    padding: 24px 16px;
+  }
+  
+  .home-main h2 {
+    font-size: 28px;
+  }
+  
+  .home-main-desc {
+    font-size: 16px;
+    padding: 16px;
+  }
+  
+  .big-buy-button {
+    padding: 20px 32px;
+    font-size: 18px;
+  }
+}
+
+/* Loading animation for future use */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.loading {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
 }

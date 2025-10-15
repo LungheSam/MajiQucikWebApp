@@ -10,7 +10,6 @@ function BuyWater() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-
   // Fetch user details from the "users" collection
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,72 +30,92 @@ function BuyWater() {
   }, []);
 
   const handlePurchase = async () => {
-        const parsedJerrycans = parseInt(jerrycans);
-        if (!parsedJerrycans || parsedJerrycans < 1) {
-          return alert('🚫 Please enter a valid number of jerrycans.');
-        }
+    const parsedJerrycans = parseInt(jerrycans);
+    if (!parsedJerrycans || parsedJerrycans < 1) {
+      return alert('🚫 Please enter a valid number of jerrycans.');
+    }
 
-        const cost = parsedJerrycans * 100;
-        const code = Math.floor(100000 + Math.random() * 900000).toString();
-        setLoading(true);
+    const cost = parsedJerrycans * 100;
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    setLoading(true);
 
-        try {
-          // Step 1: Fetch user details (from local data or Firestore)
-          const userRef = doc(db, 'users', auth.currentUser.uid);
-          const userSnap = await getDoc(userRef);
-          const userData = userSnap.data();
+    try {
+      const userRef = doc(db, 'users', auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
+      const userData = userSnap.data();
 
-          if (!userData) return alert('User data not found');
+      if (!userData) return alert('User data not found');
 
-          // Step 2: Send purchase info to backend
-          const res = await fetch('https://majiquickserver.onrender.com/api/purchase', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              uid: auth.currentUser.uid,
-              name: userData.name,
-              phone: userData.phone,
-              email: userData.email,
-              jerrycans: parsedJerrycans,
-              cost,
-              code,
-            }),
-          });
+      const res = await fetch('https://majiquickserver.onrender.com/api/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: auth.currentUser.uid,
+          name: userData.name,
+          phone: userData.phone,
+          email: userData.email,
+          jerrycans: parsedJerrycans,
+          cost,
+          code,
+        }),
+      });
 
-          const result = await res.json();
-          if (result.success) {
-            setConfirmation(`✅ You bought ${parsedJerrycans} jerrycans.\n💧 Code: ${code}\n💰 Cost: ${cost} UGX`);
-            setJerrycans('');
-          } else {
-            alert('❌ Failed to complete purchase');
-          }
+      const result = await res.json();
+      if (result.success) {
+        setConfirmation(`💧 Purchase Successful!\n\n📦 Jerrycans: ${parsedJerrycans}\n🔐 Code: ${code}\n💰 Total Cost: ${cost} UGX\n\nThank you for choosing MajiQuick!`);
+        setJerrycans('');
+      } else {
+        alert('❌ Failed to complete purchase');
+      }
 
-        } catch (error) {
-          console.error(error);
-          alert('❌ Something went wrong.');
-        }
-        finally{
-          setLoading(false);
-        }
+    } catch (error) {
+      console.error(error);
+      alert('❌ Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
   };
-
 
   return (
     <div className="buywater-container">
+      {/* Water drops animation */}
+      <div className="water-drops">
+        <div className="water-drop"></div>
+        <div className="water-drop"></div>
+        <div className="water-drop"></div>
+        <div className="water-drop"></div>
+        <div className="water-drop"></div>
+      </div>
+
       <Header title={"Buy Water"} />
+      
       <h2>Time to Buy Water</h2>
-      <input
-        type="number"
-        placeholder="Enter number of jerrycans"
-        value={jerrycans}
-        onChange={(e) => setJerrycans(e.target.value)}
-      />
-      <p>Each JerryCan costs <strong>100 UGX</strong></p>
-      <button onClick={handlePurchase} className="buy-button" disabled={loading}>
-        {loading ? 'Buying…' : 'Buy'}
+      
+      <div className="input-container">
+        <div className="input-wrapper">
+          <input
+            type="number"
+            placeholder="Enter number of jerrycans"
+            value={jerrycans}
+            onChange={(e) => setJerrycans(e.target.value)}
+            min="1"
+            max="100"
+          />
+        </div>
+      </div>
+
+      <div className="price-display">
+        <p>Each JerryCan costs <strong>100 UGX</strong></p>
+      </div>
+
+      <button 
+        onClick={handlePurchase} 
+        className="buy-button" 
+        disabled={loading || !jerrycans}
+      >
+        {loading ? 'Processing...' : '💳 Buy Water'}
       </button>
 
-      
       {confirmation && (
         <div className="confirmation-box">
           <pre>{confirmation}</pre>

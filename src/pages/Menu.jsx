@@ -18,9 +18,9 @@ function Menu() {
       <Header title="Menu" />
 
       <div className="menu-links">
-        <Link to="/buy">💳 Buy Water</Link>
-        <Link to="/notifications">🔔 Notifications</Link>
-        <Link to="/profile">👤 Profile</Link>
+        <Link to="/buy"> Buy Water</Link>
+        <Link to="/notifications"> Notifications</Link>
+        <Link to="/profile"> Profile</Link>
         <button onClick={handleLogout} className='logout-button'> Logout </button>
       </div>
     </div>
