@@ -4,7 +4,6 @@ import BuyWater from './pages/BuyWater';
 import Notifications from './pages/Notifications';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Verify from './pages/Verifiy';
 import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import Menu from './pages/Menu';
@@ -59,8 +58,8 @@ function App() {
 
           {/* 🚪 Public Routes */}
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/register-new" element={<Register />} />
-          <Route path="/verify" element={<Verify />} />
         </Routes>
       </Router>
     </AuthProvider>

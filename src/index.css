@@ -289,6 +289,24 @@ body::before {
   color: var(--blue-dark);
 }
 
+.auth-message {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.auth-message-error {
+  color: #b42318;
+}
+
+.login-logo {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 24px;
+  object-fit: contain;
+}
+
 /* Verify Page Specific */
 .verify-container {
   text-align: center;
